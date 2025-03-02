@@ -26,10 +26,14 @@ class Movie(models.Model):
         verbose_name = 'Фильмы'
         verbose_name_plural  = 'Фильмы'
 
+
+
+STARS = [(i, (str(i))) for i in range(1,6)]
 class Review(models.Model):
     text = models.TextField(verbose_name='Текст')
     movie = models.ForeignKey(Movie,on_delete=models.CASCADE,
                               verbose_name='Фильмы',related_name='reviews')
+    star = models.IntegerField(choices=STARS,verbose_name="Оценка", default=5)
     def __str__(self):
         return f'Review - {self.movie.title}'
     class Meta:

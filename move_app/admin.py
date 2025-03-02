@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.views.static import directory_index
-
 from . import models
 
 @admin.register(models.Director)
@@ -16,6 +15,6 @@ class MovieAdmin(admin.ModelAdmin):
 
 @admin.register(models.Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('movie','text')
+    list_display = ('movie','text', 'star')
     search_fields = ('movie__title',"text")
     list_filter = ('movie',)
